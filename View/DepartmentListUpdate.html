@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh sach phong ban</title>
+  </head>
+  <body>
+    <?php
+      $k = 1;
+      echo '<table border="1" width="100%" style="border-collapse: collapse; text-align: center;">'; 
+      echo '<caption style="font-weight: bold; padding-bottom: 10px;">DANH SACH PHONG BAN</caption>';
+      echo '<tr> <th>IDPB</th> <th>Tên PB</th> <th>Mô tả</th><th>Cập nhật</th> </tr>';
+
+      foreach ($departmentList as $staff) { 
+          $IDPB = $staff->IDPB;
+          $Tenpb = $staff->Tenpb;
+          $Mota = $staff->Mota;
+
+          echo "<tr> <td>$IDPB</td> <td>$Tenpb</td> <td>$Mota</td> <td><a href='C_Department.php?mod=7&IDPB=$IDPB'>---</a></td> </tr>";
+        }
+
+      echo '</table>'; 
+    ?>
+
+    <br />
+  </body>
+</html>

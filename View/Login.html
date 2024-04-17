@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <style>
+      body {
+        background-color: #92eea8;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      table {
+        margin: auto;
+      }
+
+      td:first-child {
+        padding-right: 35px;
+      }
+      .button {
+        display: flex;
+        justify-content: center;
+      }
+
+      #error-message {
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+        color: red;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post" action="C_Admin.php" onsubmit="return validateForm()">
+      <table>
+        <caption>
+          Login
+        </caption>
+        <tr>
+          <td>Username</td>
+          <td><input name="username" type="text" value="" /></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input name="password" type="password" value="" /></td>
+        </tr>
+      </table>
+      <span id="error-message"></span>
+      <div class="button">
+        <input name="ok" type="submit" value="OK" />
+        <input name="reset" type="reset" value="Reset" />
+      </div>
+    </form>
+  </body>
+
+  <script>
+    function validateForm() {
+      var username = document.querySelector('input[name="username"]').value;
+      var password = document.querySelector('input[name="password"]').value;
+      var errorText = document.getElementById("error-message");
+
+      if (username === "" || password === "") {
+        errorText.textContent = "Vui lòng nhập đầy đủ thông tin.";
+        return false;
+      } else {
+        errorText.textContent = "";
+      }
+
+      return true;
+    }
+  </script>
+</html>

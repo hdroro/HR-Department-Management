@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        background-color: rgb(0 106 187 / 34%);
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      img {
+        /* height: 65px; */
+        margin-left: 56px;
+        width: 82px;
+      }
+
+      @keyframes running-text {
+        0% {
+          left: -10;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .text {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 20px;
+        color: #20353f;
+
+        position: relative;
+        animation: running-text 10s linear infinite; /* 5s là thời gian hoạt hình chạy và linear là kiểu chuyển động */
+        white-space: nowrap; /* Ngăn chữ xuống dòng */
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <img src="../public/images/canhcut.png" />
+        </td>
+        <td class="text">
+          Chào mừng bạn đến với Bài tập thực hành số 1 môn công nghệ web
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

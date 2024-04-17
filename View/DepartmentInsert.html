@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      div {
+        display: flex;
+        margin-bottom: 5px;
+      }
+
+      label {
+        flex: 0.1;
+      }
+
+      .btn-submit {
+        margin-left: 100px;
+        width: 6%;
+        margin-top: 10px;
+      }
+
+      #idpb-result{
+        font-size: 12px;
+        color: red;
+        margin-left: 72px;
+        margin-top: 5px;
+      }
+
+      .footer{
+        display: flex;
+        flex-direction: column;
+      }
+
+      #error-message{
+        font-size: 14px;
+        color: red;
+      }
+
+      .btn-submit{
+        width: 10%;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post" action="C_Department.php?mod=5" onsubmit="return validateForm()">
+      <div class="IDPB">
+        <label>IDPB</label>
+        <input name="IDPB" type="text" id="IDPB" />
+      </div>
+      <div id="idpb-result"></div>
+
+
+      <div class="TenPB">
+        <label>Tên phòng ban</label>
+        <input name="TenPB" type="text" />
+      </div>
+      <div class="MotaPB">
+        <label>Mô tả</label>
+        <textarea name="MotaPB" type="text" ></textarea>
+      </div>
+      <div class="footer">
+        <span id="error-message"> </span> </br>
+        <input class="btn-submit" type="submit" value="OK" />
+      </div>
+    </form>
+  </body>
+
+  <script>
+    var idpbList = [];
+
+      fetch('C_Department.php')
+      .then(response => response.json())
+      .then(data => {
+        idpbList = data;
+      })
+      .catch(error => {
+        console.error('Lỗi khi tải danh sách IDPB', error);
+      });
+
+    document.getElementById('IDPB').addEventListener('input', function() {
+      var IDPB = this.value;
+      var resultDiv = document.getElementById('idpb-result');
+
+      if (idpbList.includes(IDPB)) {
+        resultDiv.textContent = 'IDPB đã tồn tại.';
+      }
+      else{
+        resultDiv.textContent = '';
+      }
+    });
+
+  </script>
+
+<script>
+    function validateForm() {
+      var IDPB = document.getElementById('IDPB').value;
+      var TenPB = document.querySelector('input[name="TenPB"]').value;
+      var MotaPB = document.querySelector('textarea[name="MotaPB"]').value;
+      var errorText = document.getElementById('error-message');
+
+      if (IDPB === "" || TenPB === "" || MotaPB === "" ) {
+        errorText.textContent = 'Vui lòng nhập đầy đủ thông tin.';
+        return false;
+      }
+      else{
+        errorText.textContent = '';
+      }
+
+      var resultDiv1 = document.getElementById('idpb-result');
+      console.log(resultDiv1.textContent);
+      if(resultDiv1.textContent != '') {
+        errorText.textContent = 'IDPB đã tồn tại.';
+        return false;
+      }
+      return true;
+    }
+</script>
+</html>
+

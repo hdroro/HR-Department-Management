@@ -1,0 +1,182 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .header {
+        text-align: center;
+        padding: 15px;
+        color: #1c80db;
+        font-size: 17;
+      }
+
+      .content-container {
+        margin: 0 5px;
+        border-radius: 10px;
+        background: #e8ecef;
+      }
+
+      .avatar {
+        text-align: center;
+        padding-top: 70px;
+      }
+
+      img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+      }
+
+      .main-info {
+        text-align: center;
+        padding-top: 15px;
+        color: #1c80db;
+      }
+
+      .name {
+        font-size: 27px;
+        padding-bottom: 10px;
+      }
+
+      .content-top {
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .content-top::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: #d7dadd;
+        bottom: 0;
+      }
+
+      .content-bottom {
+        padding-top: 10px;
+        width: 100%;
+        vertical-align: top;
+        text-align: center;
+        border-spacing: 17px;
+      }
+
+      table {
+        width: 100%;
+      }
+
+      h3 {
+        color: #1c80db;
+        font-weight: 200;
+      }
+
+      td {
+        padding: 5px;
+        vertical-align: top;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .item-skill,
+      .item {
+        padding-bottom: 5px;
+        color: #61646b;
+      }
+
+      a {
+        text-decoration: none;
+        color: #61646b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>About me</h1>
+    </div>
+
+    <div class="content-container">
+      <div class="content-top">
+        <div class="avatar">
+          <img src="../public/images/image-me.png" />
+        </div>
+        <div class="main-info">
+          <div class="name">Hong Diem Nguyen</div>
+          <span class="decription">Decription about me! </span>
+        </div>
+      </div>
+      <table class="content-bottom">
+        <tr>
+          <td class="frontend">
+            <h3>{} Frontend Technologies</h3>
+            <ul class="skills">
+              <li class="item-skill">
+                <i class="fa-brands fa-html5"></i>
+                <span class="language">HTML</span>
+              </li>
+              <li class="item-skill">
+                <i class="fa-brands fa-css3-alt"></i>
+                <span class="language">CSS </span>
+              </li>
+              <li class="item-skill">
+                <i class="fa-brands fa-js"></i>
+                <span class="language">Javascript </span>
+              </li>
+              <li class="item-skill">
+                <i class="fa-brands fa-react"></i>
+                <span class="language">ReactJS </span>
+              </li>
+            </ul>
+          </td>
+
+          <td class="backend">
+            <h3><i class="fa-solid fa-code"></i> Backend Technologies</h3>
+            <ul class="skills">
+              <li class="item-skill">
+                <i class="fa-brands fa-node-js"></i>
+                <span class="language">NodeJS</span>
+              </li>
+              <li class="item-skill">
+                <i class="fa-brands fa-java"></i>
+                <span class="language">Java </span>
+              </li>
+            </ul>
+          </td>
+
+          <td class="contact">
+            <h3>
+              <i class="fa-solid fa-address-book"></i> Contact information
+            </h3>
+            <ul class="contact-items">
+              <li class="item">
+                <i class="fa-brands fa-github"></i>
+                <a href="#"><span>github.com/hdroro</span></a>
+              </li>
+              <li class="item">
+                <i class="fa-brands fa-facebook"></i>
+                <a href="#"><span>facebook.com/Scimath.G.O.S</span></a>
+              </li>
+
+              <li class="item">
+                <i class="fa-brands fa-google"></i>
+                <a><span>hongdiem060703@gmail.com</span></a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php 
+        if (!empty($searchResults)) {
+            echo '<table border="1" width="100%" style="border-collapse: collapse; text-align: center;">'; 
+            echo '<caption style="font-weight: bold; padding-bottom: 10px;">DANH SÁCH TÌM KIẾM SINH VIÊN</caption>';
+            echo '<tr> <th>IDNV</th> <th>Họ tên</th> <th>IDPB</th> <th>Địa chỉ</th> </tr>';
+            foreach ($searchResults as $result) {
+                echo '<tr> <td>' . $result['IDNV'] . '</td> <td>' . $result['Hoten'] . '</td> <td>' . $result['IDPB'] . '</td> <td>' . $result['Diachi'] . '</td> </tr>';
+            }
+            echo '</table>';
+        } else {
+            echo "Không tìm thấy kết quả nào.";
+        }
+    ?>
+</body>
+</html>

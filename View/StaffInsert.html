@@ -1,0 +1,131 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chèn nhân viên</title>
+
+    <style>
+      div{
+        display: flex;
+        margin-bottom: 5px;
+      }
+
+      label{
+        flex: 0.1;
+      }
+      #idnv-result{
+        font-size: 12px;
+        color: red;
+        margin-left: 72px;
+         margin-top: 5px;
+      }
+      .footer{
+        display: flex;
+        flex-direction: column;
+      }
+
+      #error-message{
+        font-size: 14px;
+        color: red;
+      }
+
+      .btn-submit{
+        width: 10%;
+      }
+    </style>
+
+    
+</head>
+<body>
+  <form name="chennv" method="post" action="C_Staff.php?mod=4" onsubmit="return validateForm()">
+    <div class="IDNV">
+      <label>IDNV</label>
+      <input name="IDNV" type="text" id="IDNV" value="" />
+    </div>
+    <div id="idnv-result"></div>
+
+    <div class="Hoten">
+      <label>Họ tên</label>
+      <input name="Hoten" type="text" value="" />
+    </div>
+
+    <div class="IDPB">
+      <label>IDPB</label>
+      <select name="IDPB" value="">
+        <?php
+        if ($departmentListID) {
+            $cnt = 1;
+            foreach ($departmentListID as $id) {
+                echo '<option value="' . $cnt . '">' . $id . '</option>';
+                $cnt++;
+            }
+        }
+        ?>
+      </select>
+    </div>
+
+    <div class="Diachi">
+      <label>Địa chỉ</label>
+      <input name="Diachi" type="text" value=""/>
+    </div>
+
+    <div class="footer">
+      <span id="error-message"> </span> </br>
+      <input class="btn-submit" type="submit" value="OK" />
+    </div>
+  </form>
+
+
+  <script>
+
+    var idnvList = [];
+
+    fetch('C_Staff.php')
+    .then(response => response.json())
+    .then(data => {
+      idnvList = data;
+    })
+    .catch(error => {
+      console.error('Lỗi khi tải danh sách IDNV', error);
+    });
+
+    document.getElementById('IDNV').addEventListener('input', function() {
+      var IDNV = this.value;
+      var resultDiv = document.getElementById('idnv-result');
+
+      if (idnvList.includes(IDNV)) {
+        resultDiv.textContent = 'IDNV đã tồn tại.';
+      }
+      else{
+        resultDiv.textContent = '';
+      }
+    });
+
+    function validateForm() {
+      var IDNV = document.getElementById('IDNV').value;
+      var Hoten = document.querySelector('input[name="Hoten"]').value;
+      var IDPB = document.querySelector('select[name="IDPB"]').value;
+      var Diachi = document.querySelector('input[name="Diachi"]').value;
+      var errorText = document.getElementById('error-message');
+
+      if (IDNV === "" || Hoten === "" || IDPB === "" || Diachi === "") {
+        errorText.textContent = 'Vui lòng nhập đầy đủ thông tin.';
+        return false;
+      }
+      else{
+        errorText.textContent = '';
+      }
+
+      var resultDiv1 = document.getElementById('idnv-result');
+      console.log(resultDiv1.textContent);
+      if(resultDiv1.textContent != '') {
+        errorText.textContent = 'IDNV đã tồn tại.';
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+
+</body>
+</html>

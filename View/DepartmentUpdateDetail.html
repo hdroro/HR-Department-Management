@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+
+        div{
+            display: flex;
+            margin-bottom: 5px;
+        }
+
+        label{
+            flex: 0.1;
+        }
+    </style>
+</head>
+<body>
+    <?php
+        echo '<form method="post" action="C_Department.php?mod=7" onsubmit="return validateForm()">
+            <div class="IDPB">
+                <label>IDPB</label>
+                <input name="IDPB" type="text" value="' . $departmentInfo['IDPB'] . '" readonly/>
+            </div>
+    
+            <div class="Tenpb">
+                <label>Tên phòng ban</label>
+                <input name="Tenpb" type="text" value="' . $departmentInfo['Tenpb'] . '"/>
+            </div>
+    
+            <div class="Mota">
+                <label>Mô tả</label>
+                <input name="Mota" type="text" value="' . $departmentInfo['Mota'] . '"/>
+            </div>
+    
+            <div class="footer" style="display: flex; flex-direction: column;">
+                <span id="error-message" style="font-size: 14px; color: red;"> </span> </br>
+                <input class="btn-submit" type="submit" value="OK" style="width: 10%;"/>
+            </div>
+            </form>';
+    ?>
+</body>
+
+<script>
+    function validateForm() {
+      var TenPB = document.querySelector('input[name="Tenpb"]').value;
+      var MotaPB = document.querySelector('input[name="Mota"]').value;
+      var errorText = document.getElementById('error-message');
+
+      if (TenPB === "" || MotaPB === "" ) {
+        errorText.textContent = 'Vui lòng nhập đầy đủ thông tin.';
+        return false;
+      }
+      else{
+        errorText.textContent = '';
+      }
+
+      return true;
+    }
+</script>
+</html>

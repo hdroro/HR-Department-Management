@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh sach nhan vien</title>
+  </head>
+  <body>
+    <?php
+      $k = 1;
+      echo '<table border="1" width="100%" style="border-collapse: collapse; text-align: center;">'; 
+      echo '<caption style="font-weight: bold; padding-bottom: 10px;">DANH SACH SINH VIEN</caption>';
+      echo '<tr> <th>IDNV</th> <th>Họ tên</th> <th>IDPB</th> <th>Địa chỉ</th> </tr>';
+
+      foreach ($staffList as $staff) { 
+          $IDNV = $staff->IDNV;
+          $Hoten = $staff->Hoten;
+          $IDPB = $staff->IDPB;
+          $Diachi = $staff->Diachi;
+
+          echo "<tr> <td>$IDNV</td> <td>$Hoten</td> <td>$IDPB</td> <td>$Diachi</td> </tr>";
+      }
+
+      echo '</table>'; 
+    ?>
+
+    <br />
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+  <body>
+    <form
+      method="post"
+      action="C_Staff.php?mod=3"
+      onsubmit="return validateForm()"
+    >
+      <input id="1" type="radio" name="radionbtn" value="IDNV" />
+      <label for="1">IDNV </label>
+
+      <input id="2" type="radio" name="radionbtn" value="Họ tên" />
+      <label for="2">Họ tên </label>
+
+      <input id="3" type="radio" name="radionbtn" value="Địa chỉ" />
+      <label for="3">Địa chỉ </label> <br />
+
+      <input type="text" name="text" value="" />
+      <input class="btn-submit" type="submit" value="OK" />
+      <span id="error-message" style="font-size: 14px; color: red"> </span>
+    </form>
+
+    <script>
+      function validateForm() {
+        var radioButtons = document.getElementsByName("radionbtn");
+        var textInput = document.querySelector('input[name="text"]').value;
+        var errorText = document.getElementById("error-message");
+        var checked = false;
+
+        for (var i = 0; i < radioButtons.length; i++) {
+          if (radioButtons[i].checked) {
+            checked = true;
+            break;
+          }
+        }
+
+        if (!checked) {
+          errorText.textContent = "Vui lòng chọn một tùy chọn tìm kiếm.";
+          return false;
+        } else if (textInput === "") {
+          errorText.textContent = "Vui lòng nhập thông tin tìm kiếm.";
+          return false;
+        } else {
+          errorText.textContent = "";
+        }
+
+        return true;
+      }
+    </script>
+  </body>
+</html>
